@@ -1,0 +1,51 @@
+/* Font Family: Aller */
+
+@font-face {
+  font-family: AllerLight;
+  src: url('fonts/aller_lt.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AllerLightItalic;
+  src: url('fonts/aller_ltit.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AllerRegular;
+  src: url('fonts/aller_rg.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AllerRegularItalic;
+  src: url('fonts/aller_it.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AllerBold;
+  src: url('fonts/aller_bd.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AllerBoldItalic;
+  src: url('fonts/aller_bdit.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AllerDisplay;
+  src: url('fonts/allerdisplay.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
