@@ -207,3 +207,20 @@ div.description {
 .delete:hover {
   color: red;
 }
+
+.counter {
+  background-color: #FDC300;
+
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FDC300), to(#F08A00));
+  background-image: -webkit-linear-gradient(top, #FDC300, #F08A00);
+  background-image: -moz-linear-gradient(top, #FDC300, #F08A00);
+  background-image: -ms-linear-gradient(top, #FDC300, #F08A00);
+  background-image: -o-linear-gradient(top, #FDC300, #F08A00);
+  background-image: linear-gradient(top, #FDC300, #F08A00);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#FDC300', EndColorStr='#F08A00');
+
+  float: right;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  border-radius: 1.5em;
+}

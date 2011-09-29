@@ -11,47 +11,7 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://votebanana.incognido.ch/rss.php" />
     <script src="scriptaculous/lib/prototype.js"></script>
     <script src="scriptaculous/src/scriptaculous.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript">
-      // <![CDATA[
-        function startPage()
-        {
-          $$('li')[0].pulsate();
-        }
-
-        function deleteMessage(id)
-        {
-          url = 'ajax_get.php?d=' + id;
-          new Ajax.Request(url, {
-            method: 'get',
-            onLoading: function() { $('message-'+id).pulsate(); },
-            onSuccess: function(transport) { 
-              if(transport.responseText == id)
-              {
-                $('message-'+id).shrink();
-              }
-              else 
-              {
-                alert(id + '!=' + transport.responseText);
-              }
-            }
-          });
-        }
-
-        function update()
-        {
-          url = 'ajax_get.php?s=' + encodeURIComponent($F('text'));
-          new Ajax.Request(url, {
-            method: 'get',
-            onLoading: function() { $('text').clear(); },
-            onSuccess: function(transport) {
-              $('messages').insert({ top: transport.responseText });
-              $$('li.new')[0].pulsate();
-              $$('li.new')[0].removeClassName('new');
-            }
-          });
-        }
-      // ]]>
-    </script>
+    <script src="banana.js" type="text/javascript"></script>
   </head>
   <body onload="startPage()">
     <div id="ajaxstate" style="display:none;"><img src=""></div>

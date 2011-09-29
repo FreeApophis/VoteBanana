@@ -3,6 +3,7 @@
 
   $text = $_GET["s"];
   $delete = $_GET["d"];
+  $click = $_GET["c"];
 
   if (isset($delete))
   {
@@ -11,6 +12,15 @@
     print $delete;
     exit;
   }
+
+  if (isset($click))
+  {
+    $count = db()->fetchCell("select click_count from links where link=?", array($click));
+    db()->update( array( 'click_count' => ($count + 1) ), 'links', 'link="'.$click.'"');
+    print $click;
+    exit;
+  }
+
   if ($text == "") 
   {
     print '<li class="new">Diese Message war leer und wird deshalb nicht gespeichert!</li>';
@@ -22,7 +32,7 @@
     {
       if (db()->fetchCell("select count(*) from links where link=?", array($url)) == 0)
       {
-        $id = db()->insert( array( 'link' => $url, 'click_count' => 0 ), 'links');
+        $id = db()->insert( array( 'link' =>  htmlentities($url, ENT_QUOTES,'UTF-8'), 'click_count' => 0 ), 'links');
       }
     }
 
