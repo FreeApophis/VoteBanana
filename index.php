@@ -1,6 +1,5 @@
 <?php
-  include("db_facile.php");
-  include("tools.php");
+  include("config.php");
 ?>
 
 <html>
@@ -69,7 +68,6 @@
     </div>
     <div id="content">
       <a href="rss.php" class="right"><img src="images/rss.png"></a>
-      <a href="http://feed2.w3.org/check.cgi?url=http%3A//votebanana.incognido.ch/rss.php" class="right"><img src="images/valid-rss-rogers.png" alt="[Valid RSS]" title="Validate my RSS feed" /></a>
       <a href="javascript:update()" class="button add right">Hinzuf&uuml;gen</a>
       <div class="description">Webseite zum abstimmen bitte im Feld unten eintragen:</div>
       <form>
@@ -77,10 +75,10 @@
       </form>
       <ul id="messages">
       <?php
-        $db = dbFacile::open('mysql', 'votebanana', 'votebanana', 'votebanana', 'localhost');
-        $rows = $db->fetch('select * from texts order by id desc');
-        foreach($rows as $row) {
-          print '<li id="message-'.$row['id'].'"><div class="delete" onclick="deleteMessage('.$row['id'].')">&#10008;</div>'.message_transform($row['text']).'</li>';
+        $rows = db()->fetch('select * from texts where state=1 order by id desc');
+        foreach($rows as $row) 
+        {
+          print render_box($row['id'], $row['text']); 
         }
       ?>
       </ul>
@@ -88,6 +86,7 @@
     <div id="footer-wrapper">
       <div id="footer">
         GPL3 - Thomas Bruderer
+        <a href="http://feed2.w3.org/check.cgi?url=http%3A//votebanana.incognido.ch/rss.php" class="right"><img src="images/valid-rss-rogers.png" alt="[Valid RSS]" title="Validate my RSS feed" /></a>
       </div>
     </div>
   </body>

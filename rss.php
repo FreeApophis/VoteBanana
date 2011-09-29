@@ -1,6 +1,6 @@
 <?php
-  include("db_facile.php");
-  include("tools.php");
+  include("config.php");
+
   header('Content-type: application/rss+xml');
   print '<?xml version="1.0" encoding="utf-8"?>';
   print "\n";
@@ -21,8 +21,7 @@
     </image>
     <atom:link href="http://votebanana.incognido.ch/rss.php" rel="self" type="application/rss+xml" />
     <?php
-        $db = dbFacile::open('mysql', 'votebanana', 'votebanana', 'votebanana', 'localhost');
-        $rows = $db->fetch('select * from texts order by id desc');
+        $rows = db()->fetch('select * from texts where state=1 order by id desc');
         foreach($rows as $row) {
     ?>
     <item>
@@ -31,7 +30,7 @@
       <link>http://votebanana.incognido.ch/fruit/<?php print $row['id']; ?></link>
       <author>info@piratenpartei.ch (Piratenpartei Schweiz)</author>
       <guid>http://votebanana.incognido.ch/fruit/<?php print $row['id']; ?></guid>
-      <pubDate><?php print date(DATE_RFC2822); ?></pubDate>
+      <pubDate><?php print date(DATE_RFC2822, strtotime($row['changed'])); ?></pubDate>
     </item>
     <?php
         }
