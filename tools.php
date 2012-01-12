@@ -2,9 +2,9 @@
 
   function message_transform($str)
   {
-
     foreach(extract_url($str) as $url)
     {
+      // TO FIX: do not replace, replaced urls.
       $str = str_replace($url, "<a onclick=\"ajax_click('".$url."'); return false;\" href=\"".$url."\">".$url."</a><span class=\"counter\">".count_url($url)."</span>" ,$str);
     }
 
@@ -15,7 +15,7 @@
   function extract_url($text)
   {
     $matches = array();
-    preg_match_all("|[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]|", $text, $matches);
+    preg_match_all("|[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]*|", $text, $matches);
     return $matches[0];
   }
 
